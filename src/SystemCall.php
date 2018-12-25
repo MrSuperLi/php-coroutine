@@ -54,8 +54,13 @@ class SystemCall {
     {
         return new self(
             function(Task $task, Scheduler $schedule) use($tid) {
-                $task->setSendValue($schedule->killTask($tid));
-                $schedule->schedule($task);
+                if ($schedule->killTask($tid)) {
+                    $schedule->schedule($task);
+                } else {
+                    // 系统调用出错
+                    throw new \Exception('Invalid task ID!');
+                }
+                
             }
         );
     }
