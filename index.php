@@ -2,9 +2,9 @@
 
 // 原文： http://www.laruence.com/2015/05/28/3038.html
 
-include './Task.php';
-include './Scheduler.php';
-include './SystemCall.php';
+include './src/Task.php';
+include './src/Scheduler.php';
+include './src/SystemCall.php';
 
 
 function childTask()

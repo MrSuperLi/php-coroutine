@@ -136,7 +136,15 @@ class Scheduler {
   
             // 任务调用了系统指令
             if ($retval instanceof SystemCall) {
-                $retval($task, $this);
+                
+                try {
+                    $retval($task, $this);
+                } catch (\Exception $e) {
+                    // 系统调用出错 把错误传递给Task
+                    $task->setException($e);
+                    $this->schedule($task);
+                }
+
                 continue;
             }
 

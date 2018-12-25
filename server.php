@@ -1,8 +1,8 @@
 <?php
 
-include './Task.php';
-include './Scheduler.php';
-include './SystemCall.php';
+include './src/Task.php';
+include './src/Scheduler.php';
+include './src/SystemCall.php';
 
 function server($port) {
     echo "Starting server at port $port...\n";
